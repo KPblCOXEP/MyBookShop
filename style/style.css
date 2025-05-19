@@ -84,12 +84,40 @@ nav a {
 
 
 /* Styling for the book section, Home page */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12rem;
+}
+
+#search-bar {
+    width: 50%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    font-size: 18px;
+}
+
+#search{
+    color: #2c1e03;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 6.5px;
+    border-radius: 4px;
+    background-color: #fff8f0;
+}
+#search:hover{
+    font-size: 1.7rem;
+    padding: 5px;
+}
+
 .box-1 {
     display: grid;
     grid-template-columns: repeat(2, 800px);
     justify-content: center;
     gap: 6rem;
-    margin-top: 12rem;
+    margin-top: 5rem;
     margin-bottom: 6rem;
 }
 
@@ -534,10 +562,15 @@ nav a {
     }
 
     /*Home page body*/
+
+    .search-container {
+        margin-top: 10rem;
+    }
     .box-1 {
         grid-template-columns: repeat(1, 470px);
         justify-content: center;
         gap: 2rem;
+        margin-top: 3rem;
     }
 
     .book-container {

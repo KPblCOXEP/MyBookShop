@@ -28,6 +28,12 @@
         <i class="fa fa-bars" id="menu-switch"></i>
     </nav>
 
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input id="search-bar" type="text" placeholder="Search for books...">
+        <button id="searchBtn" type="submit"><i class="fa fa-search" id="search"></i></button>
+    </div>
+
     <!-- Book section -->
     <div class="box-1">
         <!-- Book 1 -->
@@ -55,9 +61,7 @@
             <img src="photos/necronomicon.jpg" alt="Cover of The Necronomicon by H.P. Lovecraft">
             <div class="text">
                 <h3>The Necronomicon by H.P. Lovecraft</h3>
-                <p>The Necronomicon is a fictional grimoire in H.P. Lovecraft’s cosmic horror mythos.
-Written by the “mad Arab” Abdul Alhazred, it holds forbidden knowledge and dark rituals.
-It symbolizes the danger of seeking truths beyond human comprehension.</p>
+                <p>The Necronomicon is a fictional grimoire in H.P. Lovecraft’s cosmic horror mythos. Written by the “mad Arab” Abdul Alhazred, it holds forbidden knowledge and dark rituals. It symbolizes the danger of seeking truths beyond human comprehension.</p>
                 <a href="pay.html"><button>Buy</button></a>
             </div>    
         </div>
@@ -107,6 +111,27 @@ It symbolizes the danger of seeking truths beyond human comprehension.</p>
 
         // Attach event listener to the hamburger menu icon
         document.getElementById("menu-switch").addEventListener("click", switchMenu);
+
+        // Function to search for books based on user input
+        function searchBooks() {
+        const input = document.getElementById("search-bar").value.toLowerCase();
+        const books = document.getElementsByClassName("book-container");
+
+        for (let i = 0; i < books.length; i++) {
+                const title = books[i].querySelector("h3").textContent.toLowerCase();
+                if (title.includes(input)) {
+                    books[i].style.display = "flex";
+                } else {
+                    books[i].style.display = "none";
+                }
+            }
+        }
+
+        // Run search when the button is clicked
+        document.getElementById("searchBtn").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevents page reload if button is inside a form
+            searchBooks();
+        });
     </script>
 </body>
 </html>
