@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay</title>
+    <script src="script/script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navBar">
+      <!-- Logo and site title -->
+      <div class="logo-container">
+          <img src="photos/logo.png" alt="logo">
+          <a href="index.html"><h1>My BookShop</h1></a>
+      </div>
+
+      <!-- Navigation links -->
+      <ul id="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger menu icon for mobile navigation -->
+      <i class="fa fa-bars" id="menu-switch"></i>
+  </nav>
+
+  <!-- Section title -->
+  <h2 class="payment-options">Payment Options</h2>
+
+  <!-- Card logos -->
+  <div class="cards">
+      <div class="card-row">
+          <p>Debit / Credit Card</p>
+          <div class="card-logos">
+              <img src="photos/mastercard.jpg" alt="Mastercard">
+              <img src="photos/visa.jpg" alt="Visa">
+              <img src="photos/americanexpress.jpg" alt="American Express">
+              <img src="photos/discover.png" alt="Discover">
+          </div>
+      </div>
+  </div>
+
+  <!-- Payment form container -->
+  <div class="payment-container">
+      <div class="payment-form">
+          <!-- Card number input -->
+          <div class="form-group-inline">
+              <label for="card">Card Number</label>
+              <input class="card-number" id="card" type="text">
+          </div>
+
+          <!-- Expiration date selection -->
+          <div class="form-group-inline">
+              <label>Expiration Date</label>
+              <div class="expiry">
+                  <!-- Month dropdown -->
+                  <select id="expiryMonth" name="exp-month" required aria-label="expiryYMonth">
+                      <option value="">Month</option>
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="6">06</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                  </select>
+
+                  <!-- Year dropdown -->
+                  <select id="expiryYear" name="exp-year" required aria-label="expiryYear">
+                      <option value="">Year</option>
+                      <option value="2023">2023</option>
+                      <option value="2024">2024</option>
+                      <option value="2025">2025</option>
+                      <option value="2026">2026</option>
+                      <option value="2027">2027</option>
+                      <option value="2028">2028</option>
+                      <option value="2029">2029</option>
+                      <option value="2030">2030</option>
+                  </select>
+              </div>
+          </div>
+
+          <!-- Security code input -->
+          <div class="form-group-inline">
+              <label for="cvv">Security Code</label>
+              <input id="cvv" class="security-code" type="text">
+          </div>
+
+          <!-- CVV text -->
+          <p class="security-code-text">(3–4 digit code normally on the back of your card)</p>
+
+          <!-- Continue button -->
+          <button id="btnContinue">Continue</button>
+      </div>
+  </div>
+
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+      function switchMenu() {
+          var x = document.getElementById("nav-list");
+          if (x.className === "navBar") {
+              x.className = "show";
+          } else {
+              x.className = "navBar";
+          }
+      }
+
+      // Attach click event to the hamburger icon
+      document.getElementById("menu-switch").addEventListener("click", switchMenu);
+  </script>
+</body>
+</html>

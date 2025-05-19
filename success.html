@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <script src="script/script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+  <!-- Navigation bar -->
+  <nav class="navBar">
+      <!-- Logo and site title -->
+      <div class="logo-container">
+          <img src="photos/logo.png" alt="logo">
+          <a href="index.html"><h1>My BookShop</h1></a>
+      </div>
+      
+      <!-- Navigation links -->
+      <ul id="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger menu icon for mobile navigation -->
+      <i class="fa fa-bars" id="menu-switch"></i>
+  </nav>
+
+  <!-- Success Message for card entry -->
+  <h2 class="success">You have successfully entered your credit card details</h2>
+  
+  <!-- Success message container -->
+  <div class="success-message-container">
+      <div class="success-message">
+          <!-- Card type information -->
+          <h3>Debit / Credit Card</h3>
+          <div class="card-logos">
+              <!-- Logos of card types -->
+              <img src="photos/mastercard.jpg" alt="Mastercard">
+              <img src="photos/visa.jpg" alt="Visa">
+              <img src="photos/americanexpress.jpg" alt="American Express">
+              <img src="photos/discover.png" alt="Discover">
+          </div>
+      </div>
+      
+      <!-- Displaying the Last 4 digits of the card -->
+      <p>Your credit card number ends in </p> 
+      <p id="card-number"></p> <!-- Place for the card -->
+  </div>
+
+  <!-- JavaScript for mobile menu toggle and card display -->
+  <script>
+      // Function to toggle navigation menu visibility on mobile
+      function switchMenu() {
+          var x = document.getElementById("nav-list");
+          if (x.className === "navBar") {
+              x.className = "show"; // Show the menu when clicked
+          } else {
+              x.className = "navBar"; // Hide the menu otherwise
+          }
+      }
+    
+      // Attach event listener to the hamburger menu icon
+      document.getElementById("menu-switch").addEventListener("click", switchMenu);
+
+      // Use the last 4 digits of the card from sessionStorage
+      const last4Digits = sessionStorage.getItem("last_Four_Digits");
+      if (last4Digits) {
+          // Display the last 4 digits
+          document.getElementById("card-number").textContent = `**** **** **** ${last4Digits}`;
+      } else {
+          // If no card number found, display a message
+          document.getElementById("card-number").textContent = "Card not found.";
+      }
+  </script>
+</body>
+</html>
