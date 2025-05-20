@@ -5,6 +5,24 @@ body{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+.book-card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+    }
+    .book-card img {
+      width: 100px;
+      height: auto;
+    }
+    .book-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+
 /*Nav Bar*/
 
 nav {
@@ -84,14 +102,14 @@ nav a {
 
 
 /* Styling for the book section, Home page */
-.search-container {
+.search-form {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 12rem;
 }
 
-#search-bar {
+#search-input {
     width: 50%;
     padding: 10px;
     border-radius: 4px;
@@ -99,18 +117,20 @@ nav a {
     font-size: 18px;
 }
 
-#search{
+#searchBtn{
     color: #2c1e03;
     font-size: 1.5rem;
     cursor: pointer;
-    padding: 6.5px;
+    padding: 5.5px;
     border-radius: 4px;
     background-color: #fff8f0;
 }
-#search:hover{
+#searchBtn:hover{
     font-size: 1.7rem;
-    padding: 5px;
+    padding: 4px;
 }
+
+
 
 .box-1 {
     display: grid;

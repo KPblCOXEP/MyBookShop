@@ -41,7 +41,7 @@ window.onload = () => {
         // Working with the server
         // If the form is valid, proceed to send data to the server
         if(valid) {
-            const url = "http://localhost:3000/api/payment";
+            const url_card = "http://localhost:3000/node/api/creditcard";
             const data = {
                 "master_card": card,
                 "exp_year": year,
@@ -49,7 +49,7 @@ window.onload = () => {
                 "cvv_code": cvv
             };
             
-            fetch(url, {
+            fetch(url_card, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -80,12 +80,4 @@ window.onload = () => {
             });
         }
     });
-
-    fetch('http://localhost:3000/api/books')
-        .then(res => res.json())
-        .then(data => {
-            // выводим книги на страницу
-            console.log(data);
-        });
-
 };

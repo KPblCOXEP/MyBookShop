@@ -6,7 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    
+    <script src="script/home.js"></script>
 </head>
 <body>
     <!-- Navigation bar -->
@@ -29,73 +29,15 @@
     </nav>
 
     <!-- Search Bar -->
-    <div class="search-container">
-        <input id="search-bar" type="text" placeholder="Search for books...">
-        <button id="searchBtn" type="submit"><i class="fa fa-search" id="search"></i></button>
-    </div>
+    <form class="search-form">
+        <input id="search-input" type="text" placeholder="Search for books...">
+        <button id="searchBtn" type="submit"><i class="fa fa-search"></i></button>
+    </form>
 
     <!-- Book section -->
-    <div class="box-1">
-        <!-- Book 1 -->
-        <div class="book-container">
-            <img src="photos/coraline.jpg" alt="Cover of Coraline by Neil Gaiman">
-            <div class="text">
-                <h3>Coraline by Neil Gaiman</h3>
-                <p>Coraline by Neil Gaiman, with eerie illustrations by Dave McKean, is a dark fantasy about a girl who discovers a parallel world behind a hidden door. At first it seems better, but her “other” parents’ button-eyed smiles conceal a sinister truth. It’s a chilling tale of courage, curiosity, and confronting fear.</p>
-                <a href="pay.html"><button>Buy</button></a>
-            </div>
-        </div>
-    
-        <!-- Book 2 -->
-        <div class="book-container">
-            <img src="photos/metamorphosis.jpg" alt="Cover of The Metamorphosis by Franz Kafka">
-            <div class="text">
-                <h3>The Metamorphosis by Franz Kafka</h3>
-                <p>Franz Kafka’s The Metamorphosis is a surreal novella about Gregor Samsa, a salesman who wakes up as a giant insect. As his family rejects him, the story explores themes of alienation, identity, isolation, and the fragility of human relationships and existence.</p>
-                <a href="pay.html"><button>Buy</button></a>
-            </div>
-        </div>
-    
-        <!-- Book 3 -->
-        <div class="book-container">
-            <img src="photos/necronomicon.jpg" alt="Cover of The Necronomicon by H.P. Lovecraft">
-            <div class="text">
-                <h3>The Necronomicon by H.P. Lovecraft</h3>
-                <p>The Necronomicon is a fictional grimoire in H.P. Lovecraft’s cosmic horror mythos. Written by the “mad Arab” Abdul Alhazred, it holds forbidden knowledge and dark rituals. It symbolizes the danger of seeking truths beyond human comprehension.</p>
-                <a href="pay.html"><button>Buy</button></a>
-            </div>    
-        </div>
+    <div class="book-list" id="book-list"></div>
 
-        <!-- Book 4 -->
-        <div class="book-container">
-            <img src="photos/ritual-in-the-dark.jpg" alt="Cover of Ritual in the Dark by Colin Wilson">
-            <div class="text">
-                <h3>Ritual in the Dark by Colin Wilson</h3>
-                <p>Ritual in the Dark by Colin Wilson is a psychological thriller set in post-war Europe. It follows Stephen, a young man drawn into violence and dark rituals while grappling with alienation and existential questions.</p>
-                <a href="pay.html"><button>Buy</button></a>
-            </div>
-        </div>
-        
-        <!-- Book 5 -->
-        <div class="book-container">
-            <img src="photos/1984.jpg" alt="Cover of 1984 by George Orwell">
-            <div class="text">
-                <h3>1984 by George Orwell</h3>
-                <p>1984 by George Orwell is a dystopian novel about a society under constant surveillance. The story follows Winston Smith, who struggles against a totalitarian regime. It’s a powerful warning about censorship, control, and lost freedom.</p>
-                <a href="pay.html"><button>Buy</button></a>
-            </div>
-        </div>
 
-        <!-- Book 6 -->
-        <div class="book-container">
-            <img src="photos/crucible.jpg" alt="Cover of The Crucible by Arthur Miller">
-            <div class="text">
-                <h3>The Crucible by Arthur Miller</h3>
-                <p>The Crucible is a dramatic retelling of the Salem witch trials of 1692. Arthur Miller uses the hysteria to explore themes of fear, accusation, and integrity. Written during McCarthyism, it’s a powerful allegory about mass paranoia and injustice.</p>
-                <a href="pay.html"><button>Buy</button></a>
-            </div>
-        </div>
-    </div>
 
     <!-- JavaScript for mobile menu toggle -->
     <script>
@@ -112,25 +54,15 @@
         // Attach event listener to the hamburger menu icon
         document.getElementById("menu-switch").addEventListener("click", switchMenu);
 
-        // Function to search for books based on user input
-        function searchBooks() {
-        const input = document.getElementById("search-bar").value.toLowerCase();
-        const books = document.getElementsByClassName("book-container");
-
-        for (let i = 0; i < books.length; i++) {
-                const title = books[i].querySelector("h3").textContent.toLowerCase();
-                if (title.includes(input)) {
-                    books[i].style.display = "flex";
-                } else {
-                    books[i].style.display = "none";
-                }
+        // Function to handle search input
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const searchTerm = document.getElementById('search-input').value.trim();
+            if (searchTerm) {
+                searchBooksByTitle(searchTerm);
+            } else {
+                alert('Enter the title of the book to search');
             }
-        }
-
-        // Run search when the button is clicked
-        document.getElementById("searchBtn").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevents page reload if button is inside a form
-            searchBooks();
         });
     </script>
 </body>

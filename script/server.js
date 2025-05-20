@@ -17,7 +17,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'ТВОЙ_ПАРОЛЬ',
+  password: 'sLaCd3mRJB6eL8R',
   database: 'mybookshop'
 });
 
@@ -50,4 +50,26 @@ app.post('/node/api/creditcard', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
+});
+
+
+// Поиск книг по названию (параметр передаётся через query, например ?title=ключ)
+app.get('/api/books/search', (req, res) => {
+  const title = req.query.title;
+
+  if (!title) {
+    return res.status(400).json({ error: 'Параметр title обязателен' });
+  }
+
+  // Используем оператор LIKE для поиска подстроки в названии
+  const sql = 'SELECT * FROM books WHERE title LIKE ?';
+  const searchTerm = `%${title}%`; // ищем вхождение подстроки
+
+  db.query(sql, [searchTerm], (err, results) => {
+    if (err) {
+      console.error('Ошибка при запросе:', err);
+      return res.status(500).json({ error: 'Ошибка сервера' });
+    }
+    res.json(results);
+  });
 });
